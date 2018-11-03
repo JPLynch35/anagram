@@ -1,17 +1,19 @@
 class AnagramCreator
-  def initialize(word)
-    @word = word
+  def initialize(words)
+    @words = words
   end
 
-  def log_anagram
-    anagram_key = AnagramKey.find_or_create_by(sorted_spelling: sort_letters)
-    anagram_key.words.create(spelling: word)
+  def log_anagrams
+    words.each do |word|
+      anagram_key = AnagramKey.find_or_create_by(sorted_spelling: sort_letters(word))
+      anagram_key.words.create(spelling: word)
+    end
   end
 
   private
-  attr_reader :word
+  attr_reader :words
 
-  def sort_letters
+  def sort_letters(word)
     word.chars.sort.join
   end
 end
