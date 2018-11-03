@@ -39,6 +39,7 @@ group :test do
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
