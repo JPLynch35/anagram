@@ -1,0 +1,33 @@
+image: ruby:2.4.1
+
+pipelines:
+  default:
+    - step:
+        script:
+          - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
+          - bundle install
+          - bundle exec rake db:test:prepare
+          - bundle exec rspec
+        services: 
+          - postgres 
+  branches:
+    master:
+      - step:
+          image: node 
+          script:
+            - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
+            - bundle install
+            - bundle exec rake db:test:prepare
+            - bundle exec rspec
+            - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+          services: 
+            - postgres 
+
+definitions:
+  services:
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_DB: pipelines
+        POSTGRES_USER: test_user
+        POSTGRES_PASSWORD: test_user_password
