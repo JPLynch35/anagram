@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :words, only: [:create]
-  namespace :anagrams do
-    get '/:word.json', to: 'words#show'
-  end
+  delete 'words/:word', to: 'words#destroy'
+  get 'anagrams/:word', to: 'anagrams#show'
 end
