@@ -13,8 +13,23 @@ describe 'Get Anagrams API' do
       expect(response.status).to eq(200)
       expect(anagrams).to be_an(Array)
       expect(anagrams.count).to eq(2)
-      expect(anagrams[0]).to be_in(['read', 'dare'])
-      expect(anagrams[1]).to be_in(['read', 'dare'])
+      expect(anagrams.first).to eq('dare')
+      expect(anagrams.last).to eq('read')
+    end
+  end
+  describe 'GET /anagrams/:word.json?limit=1' do
+    it 'Returns a JSON array of words that are anagrams of the word passed in with an optional limit paameter' do
+      ana = AnagramCreator.new(['read', 'dear', 'dare'])
+      ana.log_anagrams
+
+      get '/anagrams/dear.json?limit=1'
+
+      anagrams = JSON.parse(response.body)['anagrams']
+
+      expect(response.status).to eq(200)
+      expect(anagrams).to be_an(Array)
+      expect(anagrams.count).to eq(1)
+      expect(anagrams.first).to eq('dare')
     end
   end
 end
