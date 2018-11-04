@@ -12,9 +12,9 @@ describe 'Post Words API' do
       json_payload = ({ "words": ["read", "dear", "dare"] }).to_json
       post '/words.json', params: json_payload
 
+      expect(response.status).to eq(201)
       expect(AnagramKey.count).to eq(4)
       expect(Word.count).to eq(6)
-      expect(response.status).to eq(201)
     end
   end
 end

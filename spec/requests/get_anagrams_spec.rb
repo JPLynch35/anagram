@@ -8,12 +8,13 @@ describe 'Get Anagrams API' do
 
       get '/anagrams/dear.json'
 
-      anagrams = JSON.parse(response.body)
+      anagrams = JSON.parse(response.body)['anagrams']
 
+      expect(response.status).to eq(200)
       expect(anagrams).to be_an(Array)
       expect(anagrams.count).to eq(2)
-      expect(anagrams).to include('read')
-      expect(anagrams).to include('dare')
+      expect(anagrams[0]).to be_in(['read', 'dare'])
+      expect(anagrams[1]).to be_in(['read', 'dare'])
     end
   end
 end
