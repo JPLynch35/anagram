@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Get Anagrams API' do
+describe 'GET Anagrams API' do
   describe 'GET /anagrams/:word.json' do
     it 'Returns a JSON array of words that are anagrams of the word passed in' do
       ana = AnagramCreator.new(['read', 'dear', 'dare'])

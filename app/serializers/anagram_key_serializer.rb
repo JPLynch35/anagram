@@ -10,9 +10,7 @@ class AnagramKeySerializer < ActiveModel::Serializer
   private
 
   def get_word_spellings
-    self.object.words.map do |word|
-      word.spelling
-    end
+    self.object.words.pluck(:spelling)
   end
 
   def reduce_to_limit(anagrams)

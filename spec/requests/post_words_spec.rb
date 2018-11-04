@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Post Words API' do
+describe 'POST Words API' do
   describe 'POST /words.json' do
     it 'Adds words to the data store from JSON' do
       ana = AnagramCreator.new(['dog', 'tile', 'floor'])

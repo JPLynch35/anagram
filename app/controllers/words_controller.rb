@@ -5,4 +5,9 @@ class WordsController < ApplicationController
     creator.log_anagrams
     head :created
   end
+
+  def destroy
+    Word.find_by_spelling(params[:word]).destroy
+    head :no_content
+  end
 end
