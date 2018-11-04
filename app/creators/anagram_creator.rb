@@ -6,7 +6,7 @@ class AnagramCreator
   def log_anagrams
     words.each do |word|
       anagram_key = AnagramKey.find_or_create_by(sorted_spelling: sort_letters(word))
-      anagram_key.words.create(spelling: word)
+      anagram_key.words.find_or_create_by(spelling: word)
     end
   end
 
