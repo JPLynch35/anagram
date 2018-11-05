@@ -1,9 +1,13 @@
 # Anagram
 
-Anagram is a back end API, made to store and track anagrams amongst a list of words.  Words can be added or deleted from the data store, and then queried against in order to find anagrams for a specified input.  
+Anagram is a back end API, made to store words and track anagrams.  Words can be added or deleted from the data store, and then queried against in order to find anagrams for a specified input.  
 
 ## Production Site  
-[https://anagramfinder35.herokuapp.com](https://anagramfinder35.herokuapp.com)
+[https://anagramfinder35.herokuapp.com](https://anagramfinder35.herokuapp.com)  
+*Partial word database due to Heroku limit (~5k).
+
+## Project Management 
+[https://trello.com/b/JgkPHYfK/anagram](https://trello.com/b/JgkPHYfK/anagram)
 
 ## API Endpoints
 ### Add Words  
@@ -187,4 +191,3 @@ rake import:txt
 ## Authors
 
 * **JP Lynch**
-
