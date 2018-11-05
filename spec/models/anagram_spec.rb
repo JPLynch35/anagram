@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe AnagramKey, type: :model do
+describe Anagram, type: :model do
   it 'exists' do
-    anagram_key = AnagramKey.create(sorted_spelling: 'enop')
+    anagram = Anagram.create(sorted_spelling: 'enop')
 
-    expect(anagram_key).to be_an(AnagramKey)
+    expect(anagram).to be_an(Anagram)
   end
 
   describe 'validations' do

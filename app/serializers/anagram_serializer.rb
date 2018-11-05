@@ -1,4 +1,4 @@
-class AnagramKeySerializer < ActiveModel::Serializer
+class AnagramSerializer < ActiveModel::Serializer
   attributes :anagrams
 
   def anagrams
