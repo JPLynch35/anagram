@@ -16,6 +16,15 @@ describe 'GET Anagrams API' do
       expect(anagrams.first).to eq('dare')
       expect(anagrams.last).to eq('read')
     end
+    it 'Returns a an empty JSON array if there are no anagrams for the word' do
+      get '/anagrams/dear.json'
+
+      anagrams = JSON.parse(response.body)['anagrams']
+
+      expect(response.status).to eq(200)
+      expect(anagrams).to be_an(Array)
+      expect(anagrams.count).to eq(0)
+    end
   end
   describe 'GET /anagrams/:word.json?limit=1' do
     it 'Returns a JSON array of words that are anagrams of the word passed in with an optional limit paameter' do
