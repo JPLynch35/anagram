@@ -7,13 +7,13 @@ describe 'DELETE All Words API' do
       ana.log_anagrams
 
       expect(Word.count).to eq(4)
-      expect(AnagramKey.count).to eq(3)
+      expect(Anagram.count).to eq(3)
 
       delete '/words.json'
 
       expect(response.status).to eq(204)
       expect(Word.count).to eq(0)
-      expect(AnagramKey.count).to eq(0)
+      expect(Anagram.count).to eq(0)
     end
   end
 end

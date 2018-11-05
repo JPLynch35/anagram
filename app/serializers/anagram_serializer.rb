@@ -1,10 +1,14 @@
-class AnagramKeySerializer < ActiveModel::Serializer
+class AnagramSerializer < ActiveModel::Serializer
   attributes :anagrams
 
   def anagrams
-    all_anagrams = get_word_spellings
-    all_anagrams.delete(instance_options[:input_word])
-    reduce_to_limit(all_anagrams.sort)
+    if self.object.present?
+      all_anagrams = get_word_spellings
+      all_anagrams.delete(instance_options[:input_word])
+      reduce_to_limit(all_anagrams.sort)
+    else
+      []
+    end
   end
 
   private

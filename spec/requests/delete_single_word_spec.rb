@@ -7,18 +7,18 @@ describe 'DELETE Single Word API' do
       ana.log_anagrams
 
       expect(Word.count).to eq(4)
-      expect(AnagramKey.count).to eq(3)
+      expect(Anagram.count).to eq(3)
 
       delete '/words/tile.json'
 
       expect(response.status).to eq(204)
       expect(Word.count).to eq(3)
       expect(Word.pluck(:spelling)).to eq(['dog', 'floor', 'lite'])
-      expect(AnagramKey.count).to eq(3)
+      expect(Anagram.count).to eq(3)
 
       delete '/words/lite.json'
 
-      expect(AnagramKey.count).to eq(2)
+      expect(Anagram.count).to eq(2)
     end
   end
 end

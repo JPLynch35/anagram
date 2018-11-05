@@ -15,20 +15,20 @@ ActiveRecord::Schema.define(version: 20181103160411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "anagram_keys", force: :cascade do |t|
+  create_table "anagrams", force: :cascade do |t|
     t.string "sorted_spelling"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sorted_spelling"], name: "index_anagram_keys_on_sorted_spelling"
+    t.index ["sorted_spelling"], name: "index_anagrams_on_sorted_spelling"
   end
 
   create_table "words", force: :cascade do |t|
     t.string "spelling"
-    t.bigint "anagram_key_id"
+    t.bigint "anagram_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["anagram_key_id"], name: "index_words_on_anagram_key_id"
+    t.index ["anagram_id"], name: "index_words_on_anagram_id"
   end
 
-  add_foreign_key "words", "anagram_keys"
+  add_foreign_key "words", "anagrams"
 end
