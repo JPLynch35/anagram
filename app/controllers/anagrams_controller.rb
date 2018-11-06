@@ -4,8 +4,7 @@ class AnagramsController < ApplicationController
   end
 
   def destroy
-    conn = ActiveRecord::Base.connection
-    conn.execute('TRUNCATE TABLE anagrams CASCADE')
+    removal_service.remove_all_data
     head :no_content
   end
 
@@ -13,5 +12,9 @@ class AnagramsController < ApplicationController
 
   def anagram_presenter
     AnagramPresenter.new(params[:word], params[:limit])
+  end
+
+  def removal_service
+    RemovalService.new
   end
 end
