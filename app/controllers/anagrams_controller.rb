@@ -1,16 +1,17 @@
 class AnagramsController < ApplicationController
   def show
-    render status: 200, json: Anagram.find_by_sorted_spelling(sorted_letters), input_word: params[:word], limit: params[:limit], serializer: AnagramSerializer
+    render status: 200, json: anagram_presenter.display_anagrams
   end
 
   def destroy
     conn = ActiveRecord::Base.connection
     conn.execute('TRUNCATE TABLE anagrams CASCADE')
+    head :no_content
   end
 
   private
 
-  def sorted_letters
-    params[:word].chars.sort.join
+  def anagram_presenter
+    AnagramPresenter.new(params[:word], params[:limit])
   end
 end
