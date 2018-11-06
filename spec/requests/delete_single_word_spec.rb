@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'DELETE Single Word API' do
   describe 'DELETE /words/:word.json' do
     it 'Deletes single word from the data store' do
-      ana = AnagramCreator.new(['dog', 'tile', 'floor', 'lite'])
-      ana.log_anagrams
+      anagrams = AnagramCreator.new(['dog', 'tile', 'floor', 'lite'])
+      anagrams.log_anagrams
 
       expect(Word.count).to eq(4)
       expect(Anagram.count).to eq(3)
