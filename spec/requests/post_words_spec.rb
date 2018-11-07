@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'POST Words API' do
   describe 'POST /words.json' do
     it 'Adds words to the data store from JSON' do
-      ana = AnagramCreator.new(['dog', 'tile', 'floor'])
-      ana.log_anagrams
+      anagrams = AnagramCreator.new(['dog', 'tile', 'floor'])
+      anagrams.log_anagrams
 
       expect(Anagram.count).to eq(3)
       expect(Word.count).to eq(3)
