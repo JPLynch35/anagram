@@ -5,7 +5,7 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    removal_service.remove_single_word
+    removal_service(params[:word]).remove_single_word
     head :no_content
   end
 
@@ -14,9 +14,5 @@ class WordsController < ApplicationController
   def anagram_creator
     request_payload = JSON.parse request.body.read
     creator = AnagramCreator.new(request_payload['words'])
-  end
-
-  def removal_service
-    RemovalService.new(params[:word])
   end
 end
