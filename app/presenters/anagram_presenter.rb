@@ -13,8 +13,6 @@ class AnagramPresenter
   attr_reader :service, :collection
 
   def convert_to_spellings
-    service.retrieve_anagrams.map do |word_object|
-      word_object.spelling
-    end
+    service.retrieve_anagrams.map(&:spelling)
   end
 end
