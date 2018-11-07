@@ -10,9 +10,7 @@ class AnagramCreator
     words.each do |word|
       anagram = retrieve_or_create_anagram(word)
       find_or_create_word(anagram, word)
-      Rails.cache.write(sort_letters(word), sorted_letters_cache_number(word).to_i + 1)
     end
-    
   end
 
   private
