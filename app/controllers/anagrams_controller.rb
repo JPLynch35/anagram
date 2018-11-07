@@ -13,8 +13,4 @@ class AnagramsController < ApplicationController
   def anagram_presenter
     AnagramPresenter.new(params[:word], params[:limit])
   end
-
-  def removal_service
-    RemovalService.new
-  end
 end
