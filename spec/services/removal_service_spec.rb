@@ -6,6 +6,7 @@ describe RemovalService do
 
     expect(removal_service).to be_an(RemovalService)
   end
+  
   it 'exists without parameter' do
     removal_service = RemovalService.new
 

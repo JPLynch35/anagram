@@ -1,37 +1,31 @@
 class AnagramService
-  def initialize(word, limit=nil)
+  include Sort
+
+  def initialize(word)
     @word = word
-    @limit = limit
   end
 
-  def retrieve_anagrams
-    if limit
-      sort_anagrams.take(limit.to_i)
-    else
-      sort_anagrams
-    end
+  def create_anagram_and_word
+    anagram = Anagram.find_or_create_by(sorted_spelling: sort_letters(word))
+    anagram.words.find_or_create_by(spelling: word)
+  end
+
+  def retrieve_anagram_words
+    sort_by_spellings.pluck(:spelling)
   end
 
   private
-  attr_reader :word, :limit
+  attr_reader :word
 
-  def sort_anagrams
-    remove_self.sort_by(&:spelling)
-  end
-
-  def remove_self
-    if retrieve_all_anagrams.present?
-      retrieve_all_anagrams.words.reject { |word_object| word_object.spelling == word }
-    else
+  def sort_by_spellings
+    if search_database.nil?
       []
+    else
+      search_database.words.sort_by(&:spelling)
     end
   end
 
-  def retrieve_all_anagrams
-    @anagram ||= Anagram.includes(:words).find_by_sorted_spelling(sorted_letters)
-  end
-
-  def sorted_letters
-    word.chars.sort.join
+  def search_database
+    @anagrams ||= Anagram.includes(:words).find_by_sorted_spelling(sort_letters(word))
   end
 end

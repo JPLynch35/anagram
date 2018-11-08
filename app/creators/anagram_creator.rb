@@ -5,15 +5,19 @@ class AnagramCreator
 
   def log_anagrams
     words.each do |word|
-      anagram = Anagram.find_or_create_by(sorted_spelling: sort_letters(word))
-      anagram.words.find_or_create_by(spelling: word)
+      anagram_service(word).create_anagram_and_word
+      redis_service(word).bust_cache
     end
   end
 
   private
   attr_reader :words
 
-  def sort_letters(word)
-    word.chars.sort.join
+  def anagram_service(word)
+    AnagramService.new(word)
+  end
+  
+  def redis_service(word)
+    RedisService.new(word)
   end
 end
