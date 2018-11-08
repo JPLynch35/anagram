@@ -14,10 +14,6 @@ class AnagramService
     sort_by_spellings.pluck(:spelling)
   end
 
-  def retrieve_id
-    search_database.words.select { |word_object| word_object.spelling == word }.first.id
-  end
-
   private
   attr_reader :word
 

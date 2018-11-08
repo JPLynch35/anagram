@@ -64,12 +64,4 @@ describe AnagramService do
 
     expect(anagram_words).to eq([])
   end
-
-  it 'can retrieve a word id using the indexed column of anagram' do
-    anagram_creator = AnagramCreator.new(['acts', 'cats', 'dog', 'bath', 'tacs'])
-    anagram_creator.log_anagrams
-    anagram_service = AnagramService.new('bath')
-
-    expect(anagram_service.retrieve_id).to eq(4)
-  end
 end
