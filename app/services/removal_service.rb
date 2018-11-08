@@ -4,7 +4,7 @@ class RemovalService
   end
 
   def remove_single_word
-    Word.destroy(anagram_service.retrieve_id)
+    Word.find_by_spelling(word).destroy
     redis_service(word).bust_cache
   end
 
