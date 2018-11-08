@@ -7,7 +7,7 @@ describe AnagramCreator do
     expect(anagram_creator).to be_an(AnagramCreator)
   end
 
-  it 'creates an angram object and word object if neither are found found' do
+  it 'creates an angram object and word object if neither are found' do
     anagram_creator = AnagramCreator.new(['tile'])
 
     expect(Anagram.count).to eq(0)
@@ -33,7 +33,7 @@ describe AnagramCreator do
     expect(Word.count).to eq(2)
   end
 
-  it 'does not create an angram object or word object if word found' do
+  it 'does not create an angram object or word object if both found' do
     anagram_creator1 = AnagramCreator.new(['tile'])
     anagram_creator1.log_anagrams
 

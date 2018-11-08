@@ -19,6 +19,18 @@ describe AnagramPresenter do
     expect(presenter.display_anagrams).to eq(expected)
   end
 
+  it 'can limit output based on user input' do
+    anagrams = AnagramCreator.new(['cat', 'tac', 'floor', 'act'])
+    anagrams.log_anagrams
+    presenter = AnagramPresenter.new('tac', 1)
+  
+    expected = {
+      anagrams: ['act']
+    }
+
+    expect(presenter.display_anagrams).to eq(expected)
+  end
+
   it 'can display an empty anagrams collection if no matches found' do
     anagrams = AnagramCreator.new(['dog', 'floor', 'lite'])
     anagrams.log_anagrams

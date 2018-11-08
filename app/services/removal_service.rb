@@ -1,20 +1,17 @@
 class RemovalService
-  include CounterCache
-  include Sort
-
   def initialize(word=nil)
     @word = word
   end
 
   def remove_single_word
     Word.destroy(anagram_service.retrieve_id)
-    Rails.cache.write(sort_letters(word), sorted_letters_cache_number(word).to_i + 1)
+    redis_service(word).bust_cache
   end
 
   def remove_all_data
     conn = ActiveRecord::Base.connection
     conn.execute('TRUNCATE TABLE anagrams CASCADE')
-    Rails.cache.clear
+    redis_service.clear_cache
   end
 
   private
@@ -22,5 +19,9 @@ class RemovalService
 
   def anagram_service
     AnagramService.new(word)
+  end
+
+  def redis_service(word=nil)
+    RedisService.new(word)
   end
 end
