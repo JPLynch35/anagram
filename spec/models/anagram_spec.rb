@@ -15,19 +15,4 @@ describe Anagram, type: :model do
     it { should have_many(:words) }
     it { should validate_uniqueness_of(:sorted_spelling) }
   end
-
-  describe 'callback' do
-    it 'should be deleted after its last word is deleted' do
-      anagram = Anagram.create(sorted_spelling: 'act')
-      anagram.words.create(spelling: 'act')
-      anagram.words.create(spelling: 'cat')
-
-      expect(Anagram.count).to eq(1)
-
-      Word.destroy(2)
-      Word.destroy(1)
-
-      expect(Anagram.count).to eq(0)
-    end
-  end
 end

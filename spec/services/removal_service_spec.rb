@@ -27,17 +27,15 @@ describe RemovalService do
     expect(Word.count).to eq(3)
   end
 
-  it 'can remove a single word and orphaned anagram from the database' do
+  it 'can remove a single word from the database' do
     anagram_creator = AnagramCreator.new(['tile', 'lite', 'dog', 'bath'])
     anagram_creator.log_anagrams
     
-    expect(Anagram.count).to eq(3)
     expect(Word.count).to eq(4)
 
     removal_service = RemovalService.new('dog')
     removal_service.remove_single_word
 
-    expect(Anagram.count).to eq(2)
     expect(Word.count).to eq(3)
   end
 
