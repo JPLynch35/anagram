@@ -13,10 +13,11 @@ Anagram is a Rails-based back end API, made to store words and track anagrams.  
 [https://trello.com/b/JgkPHYfK/anagram](https://trello.com/b/JgkPHYfK/anagram)
 
 ## API Endpoints
----
+---  
+
 ### Add Words  
 
-  Takes a JSON array of English-language words and adds them to the data store.
+Takes a JSON array of English-language words and adds them to the data store.
 
 * **URL**
 
@@ -43,10 +44,11 @@ Anagram is a Rails-based back end API, made to store words and track anagrams.  
 
     ```
     $ curl -i -X POST -d '{ "words": ["field", "table", "cup"] }' http://localhost:3000/words.json
-    ```
+    ```  
+
 ### Find Anagrams  
 
-  Returns a JSON array of English-language words that are anagrams of the word passed in the URL.
+Returns a JSON array of English-language words that are anagrams of the word passed in the URL.
 
 * **URL**
 
@@ -74,10 +76,11 @@ Anagram is a Rails-based back end API, made to store words and track anagrams.  
 
     ```
     $ curl -i http://localhost:3000/anagrams/read.json?limit=2
-    ```
+    ```  
+
 ### Delete a Word  
 
-  Deletes a single word from the data store.
+Deletes a single word from the data store.
 
 * **URL**
 
@@ -104,10 +107,11 @@ Anagram is a Rails-based back end API, made to store words and track anagrams.  
 
     ```
     $ curl -i -X DELETE http://localhost:3000/words/read.json
-    ```
+    ```  
+
 ### Delete All Data  
 
-  Deletes all contents of the data store.
+Deletes all contents of the data store.
 
 * **URL**
 
