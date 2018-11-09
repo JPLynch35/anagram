@@ -17,10 +17,6 @@ class RemovalService
   private
   attr_reader :word
 
-  def anagram_service
-    AnagramService.new(word)
-  end
-
   def redis_service(word=nil)
     RedisService.new(word)
   end
