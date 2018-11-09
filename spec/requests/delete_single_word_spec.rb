@@ -15,10 +15,6 @@ describe 'DELETE Single Word API' do
       expect(Word.count).to eq(3)
       expect(Word.pluck(:spelling)).to eq(['dog', 'floor', 'lite'])
       expect(Anagram.count).to eq(3)
-
-      delete '/words/lite.json'
-
-      expect(Anagram.count).to eq(2)
     end
   end
 end

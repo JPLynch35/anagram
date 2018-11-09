@@ -7,7 +7,7 @@ class AnagramService
 
   def create_anagram_and_word
     anagram = Anagram.find_or_create_by(sorted_spelling: sort_letters(word))
-    anagram.words.find_or_create_by(spelling: word)
+    Word.create(anagram_id: anagram.id, spelling: word)
   end
 
   def retrieve_anagram_words

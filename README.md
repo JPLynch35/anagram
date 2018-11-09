@@ -20,19 +20,19 @@ Anagram is a back end API, made to store words and track anagrams.  Words can be
 
 * **Method:**
 
-  `POST`
+    `POST`
   
 *  **URL Params**
 
-	None
+	  None
 
 * **Data Params**
 
-   **Required:** `{"words": ["wordone", "wordtwo", "wordthree"] }`
+    **Required:** `{"words": ["wordone", "wordtwo", "wordthree"] }`
 
 * **Success Response:**
 
-  * **Code:** 201 <br />
+  * **Code:** 201  
   * **Content:** None
  
 * **Sample Call:**
@@ -46,24 +46,24 @@ Anagram is a back end API, made to store words and track anagrams.  Words can be
 
 * **URL**
 
-  /anagrams/<b>:word</b>.json
+  /anagrams/**:word**.json
 
 * **Method:**
 
-  `GET`
+    `GET`
   
 *  **URL Params**
 
-	**Required:** Replace <b>:word</b> with your desired word.  
-	**Optional:** `limit=[integer]` Set to limit number of return anagrams.  
+	  **Required:** Replace **:word** with your desired word.  
+	  **Optional:** `limit=[integer]` Set to limit number of return anagrams.  
 
 * **Data Params**
 
-   None
+    None
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 200  
   * **Content:**  `{"anagrams": ["wordone", "wordtwo"]}`
  
 * **Sample Call:**
@@ -77,23 +77,23 @@ Anagram is a back end API, made to store words and track anagrams.  Words can be
 
 * **URL**
 
-	/words/<b>:word</b>.json
+	/words/**:word**.json
 
 * **Method:**
 
-  `DELETE`
+    `DELETE`
   
 *  **URL Params**
 
-	**Required:** Replace <b>:word</b> with your desired word.
+	  **Required:** Replace **:word** with your desired word.
 
 * **Data Params**
 
-	None
+	  None
 
 * **Success Response:**
 
-  * **Code:** 204 <br />
+  * **Code:** 204  
   * **Content:**  No Content
  
 * **Sample Call:**
@@ -111,19 +111,19 @@ Anagram is a back end API, made to store words and track anagrams.  Words can be
 
 * **Method:**
 
-  `DELETE`
+    `DELETE`
   
 *  **URL Params**
 
-	None
+	  None
 
 * **Data Params**
 
-	None
+	  None
 
 * **Success Response:**
 
-  * **Code:** 204 <br />
+  * **Code:** 204  
   * **Content:**  No Content
  
 * **Sample Call:**
@@ -174,14 +174,14 @@ In order to run the external test suite, you must first run the server for this 
 ```
 rails s
 ```
-Open the test application, <b>platform_dev</b>, and remove all the pending lines from tests.  From within the platform_dev application folder, run the test file.
+Open the test application, **platform_dev**, and remove all the pending lines from tests.  From within the platform_dev application folder, run the test file.
 ```
 ruby anagram_test.rb
 ```
 
 ## Importing Words from Supplied List
 
-<b>Important:</b> The external test suite will fail if the words are imported into the development database as the test is ran against development on localhost:3000.
+**Important:** The external test suite will fail if the words are imported into the development database as the test is ran against development on localhost:3000.
 
 Inside the project directory, run the following rake command. The imported list is rather large and will take some time to complete.  A progress bar has been added, allowing you to monitor progress.
 ```

@@ -14,7 +14,6 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   config.action_controller.perform_caching = true
-
   config.cache_store = :redis_store, {
     expires_in: 1.hour,
     namespace: 'cache',
