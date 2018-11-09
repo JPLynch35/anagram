@@ -5,7 +5,7 @@ Anagram is a Rails based back end API, made to store words and track anagrams.  
 
 ## Production Site  
 ---
-https://anagramfinder35.herokuapp.com 
+https://anagramfinder35.herokuapp.com  
 *Partial word database due to Heroku limit (~5k unique words).
 
 ## Project Management 
