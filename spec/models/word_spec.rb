@@ -11,6 +11,7 @@ describe Word, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:spelling) }
     it { should validate_presence_of(:anagram_id) }
+    it { should validate_uniqueness_of(:spelling) }
   end
 
   describe 'relationships' do

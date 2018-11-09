@@ -13,6 +13,7 @@ describe Anagram, type: :model do
 
   describe 'relationships' do
     it { should have_many(:words) }
+    it { should validate_uniqueness_of(:sorted_spelling) }
   end
 
   describe 'callback' do
