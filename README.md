@@ -213,7 +213,7 @@ ruby anagram_test.rb
 * Schema:
 	* I started to research the best way to save anagrams.  I came to the conclusion that I would benefit from sorting the spelling of each word alphabetically when the word came into the application.  I then thought about having a Word object with sorted spelling and spelling attributes, but this would repeat data.  From this initial idea, I wanted to normalize the database.
 	* I decided to have two separate objects, Anagrams and Words.  The Anagram would hold the sorted spelling attribute and have many Word objects associated with it that simply contained the spelling attribute (and the Anagram id).  This way, data would not be repeated in the database.
-		* ![picture](data/images/schema.png)
+		* ![picture](data/images/schema.png){ width=30% }
 	* Anagrams and Words would also fit the expected paths and create a RESTful application design.
 * Set Up:
 	* I chose BitBucket as private repositories were included on the free plan.
@@ -232,7 +232,7 @@ ruby anagram_test.rb
 * Initial Performance Testing
 	*  I initially utilized NewRelic for performance testing, but did not enjoy the experience.  After talking with some developers, I decided to use a free trial for ScoutApp.
 	*  I discovered that my Word delete and Word create actions were taking a considerable while.
-	*  ![picture](data/images/pre-refactor.png)
+	*  ![picture](data/images/pre-refactor.png){ width=30% }
 * Second Refactoring:
 	* Word delete:
 		* I initially had a callback completed on every Word delete in order to automatically delete Anagram objects if their last associated child Word object was deleted.  I decided to take this out to reduce database calls and instead replace it with a Heroku scheduled production rake task that would remove all childless Anagrams at 2 AM (MDT/MST).  This would speed up app response time and shift that cleanup process to a time when the application would probably be less busy.
@@ -247,7 +247,7 @@ ruby anagram_test.rb
 				* Every word creation or word deletion would bust the cache for that anagram stored in Redis.  Upon this change, the stale data would no longer be pulled and instead the application would know to pull from the PostgreSQL database.
 * Second Performance Testing
 	* After the second refactoring I re-ran the same requests as the initial performance test.
-	* ![picture](data/images/post-refactor.png)
+	* ![picture](data/images/post-refactor.png){ width=30% }
 
 ## Authors  
 ---  
