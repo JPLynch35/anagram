@@ -153,7 +153,7 @@ This application was created in Rails v5.1.6, utilizing Ruby v2.4.1.
 
 Clone the project down locally to your machine.  
 ```
-git clone https://jplynch35@bitbucket.org/jplynch35/anagram.git
+git clone https://github.com/JPLynch35/anagram.git
 ```  
 Inside the project directory, prepare the gems for development with bundler.  
 ```
@@ -187,20 +187,9 @@ redis-server
 ## Running Tests  
 ---
 
-This application has two separate test suits.  One is ran internally within the project, utilizing RSpec.  The second is ran externally on a running localhost:3000.
-
-### Internal
-In order to run the internal test suite, call upon RSpec in the terminal while in the application folder.  
+In order to run the test suite, call upon RSpec in the terminal while in the application folder.  
 ```
 rspec
-```
-
-### External
-In order to run the external test suite, you must first run the server for this application locally (refer above to Running a Local Server).
-
-Open the test application, **platform_dev**, and remove all the pending lines from tests.  From within the platform_dev application folder, run the test file.
-```
-ruby anagram_test.rb
 ```
 
 ## Design Overview  
@@ -216,13 +205,9 @@ ruby anagram_test.rb
 		* ![picture](data/images/schema.png)
 	* Anagrams and Words would also fit the expected paths and create a RESTful application design.
 * Set Up:
-	* I chose BitBucket as private repositories were included on the free plan.
 	* I utilized a development and master branch workflow, with the idea that I would push into development multiple times a day and then push into master less frequently.
-	* BitBucket uses an internal CI called Pipeline.  I set up Pipeline to run the internal RSpec tests every time a branch was merged.  I also had it auto-deploy the code to the Heroku production site whenever development was merged into master.
-		* Pipeline had to be turned off after the application was fully functional and before refactoring as I was running out of Pipeline time on the free plan.
-		* Pipeline was turned back on for the final code push.
 * Initial Coding:
-	* I followed a TDD approach with RSpec to creating the application.  I looked at the requirements and the external test suite to drive each feature of the app.
+	* I followed a TDD approach with RSpec to creating the application.  I looked at the requirements and an external test suite to drive each feature of the app.
 	* I created each feature and had a fully functioning application.  It passed the local and external test suites, but I knew it needed refactoring.
 	* I used Heroku for a production site, but had issues with database limits (free plan caps at 10k rows).  I created a separate dictionary file and rake task to load into Heroku with approximately 5k words.
 * Initial Refactoring
